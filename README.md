@@ -26,5 +26,12 @@ The main functionality includes:
 - HTML template is mainly for visualise the data from component
 - Component be the bridge between template and component-store
 
+If you are interested to run in local device, please change the `apiUrl` to `https://localhost:44309/api/<service-name>` in `CustomerService` and `PhoneNumberService` as example below:
+~~~
+private apiUrl = 'https://localhost:44309/api/phonenumber'
+~~~
+
+**In order to access the database server, please let me know your client IPv4 address.**
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
