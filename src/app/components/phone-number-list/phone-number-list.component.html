@@ -1,0 +1,33 @@
+<div class="container pt-5">
+    <div class="d-flex justify-content-between mb-2">
+        <button type="button" class="btn btn-primary" (click)="openAddNewPhoneDialog()">Add New Phone Number</button>
+        <div class="d-flex justify-content-between">
+            <label class="align-items-center d-flex me-2">Filter by Customer</label>
+            <select class="form-select w-auto me-3" [ngModel]="selectedCustomerId$ | async" (change)="onCustomerFilterChange($event)">
+                <option *ngFor="let customer of customers$ | async" [value]="customer.id">{{ customer.name }}</option>
+            </select>
+            <button type="button" class="btn btn-primary" (click)="clearCustomerFilter()">Clear Filter</button>
+        </div>
+
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let phoneNumber of phoneNumbers$ | async; let i = index">
+                <td>{{ phoneNumber.phoneNumber }}</td>
+                <td>{{ phoneNumber.customerName }}</td>
+                <td>{{ phoneNumber.active ? 'Active': 'Inactive' }}</td>
+                <td>
+                    <button *ngIf="!phoneNumber.active" class="btn btn-primary" (click)="activatePhoneNumber(phoneNumber)">Activate</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
